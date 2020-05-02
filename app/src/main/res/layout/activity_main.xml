@@ -6,13 +6,82 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+    <Button
+            android:id="@+id/notifications_btn"
+            android:layout_width="98dp"
+            android:layout_height="97dp"
+            android:layout_marginTop="36dp"
+            android:gravity="bottom|center"
+            android:text="Оповещ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.816"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_value_btn" />
+
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/textView"
+            android:layout_width="243dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Прогноз" />
+
+    <TextView
+            android:id="@+id/forecasted_num_tv"
+            android:layout_width="264dp"
+            android:layout_height="105dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#E95656"
+            android:textSize="60sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="5.3" />
+
+    <TextView
+            android:id="@+id/forecasted_time_tv"
+            android:layout_width="282dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forecasted_num_tv"
+            tools:text="Через 40 минут" />
+
+    <Button
+            android:id="@+id/save_value_btn"
+            android:layout_width="233dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="16dp"
+            android:text="Записать значение"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forecasted_time_tv" />
+
+    <Button
+            android:id="@+id/graphics_btn"
+            android:layout_width="98dp"
+            android:layout_height="97dp"
+            android:layout_marginTop="36dp"
+            android:gravity="bottom|center"
+            android:text="Отчет"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.183"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_value_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
