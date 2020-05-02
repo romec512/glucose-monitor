@@ -5,11 +5,15 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.glucose_monitor"
-        minSdkVersion 15
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes {
         release {
@@ -26,5 +30,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.1'
+//    implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.1'
+//    implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.4'
+
 }
