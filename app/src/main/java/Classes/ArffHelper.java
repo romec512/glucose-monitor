@@ -12,7 +12,7 @@ public class ArffHelper {
         FileInputStream fin = null;
         byte[] bytes = null;
         try {
-            fin = new FileInputStream(new File(path));
+                fin = new FileInputStream(new File(path));
             bytes = new byte[fin.available()];
             fin.read(bytes);
         }catch (FileNotFoundException e) {
@@ -37,6 +37,8 @@ public class ArffHelper {
         file = new File(filepath);
         try {
             if(!file.exists()) {
+                File dir = new File("/storage/emulated/0/glucose-monitor");
+                dir.mkdir();
                 file.createNewFile();
             } else {
                 oldFileContent = ArffHelper.readFile(filepath);
