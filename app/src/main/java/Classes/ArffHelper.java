@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 public class ArffHelper {
+    public static final String basePath = "/storage/emulated/0/glucose-monitor/";
     public static String readFile(String path){
         FileInputStream fin = null;
         byte[] bytes = null;
@@ -31,24 +32,24 @@ public class ArffHelper {
         return new String(bytes);
     }
 
-    public static void Append(String filepath, String data) {
+    public static void Append(String filename, String data) {
         String oldFileContent =  null;
         File file = null;
-        file = new File(filepath);
+        file = new File(basePath + filename);
         try {
             if(!file.exists()) {
-                File dir = new File("/storage/emulated/0/glucose-monitor");
+                File dir = new File(basePath);
                 dir.mkdir();
                 file.createNewFile();
             } else {
-                oldFileContent = ArffHelper.readFile(filepath);
+                oldFileContent = ArffHelper.readFile(basePath + filename);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         FileOutputStream fOut = null;
         try {
-            fOut = new FileOutputStream(filepath);
+            fOut = new FileOutputStream(basePath + filename);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

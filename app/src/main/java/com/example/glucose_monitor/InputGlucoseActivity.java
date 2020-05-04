@@ -18,7 +18,7 @@ import Classes.ArffHelper;
 public class InputGlucoseActivity extends AppCompatActivity {
     private EditText glucoseValueET;
     private Button saveGlucose;
-    private String filepath = "/storage/emulated/0/glucose-monitor/arff.arff";
+    private String filename = "arff.arff";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class InputGlucoseActivity extends AppCompatActivity {
                 }
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                 String data = format.format(new Date()) + ',' + value + "\n";
-                ArffHelper.Append(filepath, data);
+                ArffHelper.Append(filename, data);
                 Toast.makeText(InputGlucoseActivity.this, "Значение успешно сохранено", Toast.LENGTH_LONG).show();
                 Intent mainActivity = new Intent(InputGlucoseActivity.this, MainActivity.class);
                 startActivity(mainActivity);
