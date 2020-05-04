@@ -29,7 +29,12 @@ public class InputGlucoseActivity extends AppCompatActivity {
         saveGlucose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String value = glucoseValueET.getText().toString();
+                String inputValue = glucoseValueET.getText().toString();
+                float value = Float.parseFloat(inputValue) * 18; //См. формулу для перевода из ммоль/л в мг/дл для глюкозы
+                if (value < 0 || value == 0) {
+                    Toast.makeText(InputGlucoseActivity.this, "Введите корректное значение", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                 String data = format.format(new Date()) + ',' + value + "\n";
                 ArffHelper.Append(filepath, data);
