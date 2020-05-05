@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, ForecasterBroadcastReceiver.class);
                 PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
                 alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                        SystemClock.elapsedRealtime() + 1000, 60*1000, alarmIntent);
+                        SystemClock.elapsedRealtime() + 1000, 10 * 60 * 1000, alarmIntent);
             }
         });
 
