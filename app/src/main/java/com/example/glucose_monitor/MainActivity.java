@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         notificationsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = getBaseContext();
-                AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-                Intent intent = new Intent(context, ForecasterBroadcastReceiver.class);
-                PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                        SystemClock.elapsedRealtime() + 1000, 10 * 60 * 1000, alarmIntent);
+
             }
         });
+
+        if (!hasAlarmAlreadyStarted()) {
+            setAlarm();
+        }
+
 
     }
 
@@ -98,5 +98,20 @@ public class MainActivity extends AppCompatActivity {
             forecastedNumTV.setText(String.format("%.2f", predicted));
             forecastedTimeTV.setText("Ожидается в " + timeFormat.format(predictedDate));
         }
+    }
+
+    protected void setAlarm() {
+        Context context = getBaseContext();
+        AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, ForecasterBroadcastReceiver.class);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + 1000, 10 * 60 * 1000, alarmIntent);
+    }
+
+    protected boolean hasAlarmAlreadyStarted() {
+        Context context = getBaseContext();
+        return PendingIntent.getBroadcast(context, 0, new Intent(context, ForecasterBroadcastReceiver.class),
+                PendingIntent.FLAG_NO_CREATE) != null;
     }
 }
