@@ -32,5 +32,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 //    implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.1'
 //    implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.4'
+    implementation 'com.jjoe64:graphview:4.2.2'
 
 }
