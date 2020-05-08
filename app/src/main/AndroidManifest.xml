@@ -15,9 +15,12 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <receiver
-                android:name=".ForecasterBroadcastReceiver"
+                android:name=".NotificationsBroadcastReceiver"
                 android:enabled="true"
-                ></receiver>
+                android:exported="true"></receiver>
+        <receiver
+                android:name=".ForecasterBroadcastReceiver"
+                android:enabled="true" />
 
         <activity android:name=".InputGlucoseActivity" />
         <activity android:name=".MainActivity">

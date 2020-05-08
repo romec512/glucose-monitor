@@ -6,18 +6,6 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <Button
-            android:id="@+id/notifications_btn"
-            android:layout_width="98dp"
-            android:layout_height="97dp"
-            android:layout_marginTop="36dp"
-            android:gravity="bottom|center"
-            android:text="Оповещ"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.816"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/save_value_btn" />
-
     <TextView
             android:id="@+id/textView"
             android:layout_width="243dp"
@@ -81,6 +69,20 @@
             android:text="Отчет"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.183"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_value_btn" />
+
+    <ToggleButton
+            android:id="@+id/notifications_btn"
+            android:layout_width="98dp"
+            android:layout_height="97dp"
+            android:layout_marginTop="36dp"
+            android:gravity="bottom|center_horizontal"
+            android:text="ToggleButton"
+            android:textOff="Уведомл. выкл"
+            android:textOn="Уведомл. вкл"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.759"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/save_value_btn" />
 
