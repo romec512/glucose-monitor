@@ -83,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        graphicsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent selectOfChartsType = new Intent(MainActivity.this, SelectChartsType.class);
+                startActivity(selectOfChartsType);
+            }
+        });
+
         if (!hasAlarmAlreadyStarted()) {
             setAlarm();
         }
