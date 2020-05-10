@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent inputGlucoseActivity = new Intent(MainActivity.this, InputGlucoseActivity.class);
                 startActivity(inputGlucoseActivity);
-                finish();
             }
         });
 
