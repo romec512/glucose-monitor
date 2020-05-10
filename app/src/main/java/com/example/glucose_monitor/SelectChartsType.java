@@ -2,6 +2,7 @@ package com.example.glucose_monitor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +45,8 @@ public class SelectChartsType extends AppCompatActivity {
     }
 
     private void showChartActivity(ChartsPeriod period) {
-
+        Intent chartActivity = new Intent(SelectChartsType.this, ChartActivity.class);
+        chartActivity.putExtra("numOfDays", period.getPeriod());
+        startActivity(chartActivity);
     }
 }
