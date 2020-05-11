@@ -4,36 +4,29 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/graphics_background"
         tools:context=".SelectChartsType">
-
-    <TextView
-            android:id="@+id/textView4"
-            android:layout_width="305dp"
-            android:layout_height="107dp"
-            android:layout_marginTop="36dp"
-            android:text="Сформировать график"
-            android:textAlignment="center"
-            android:textSize="42sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     <Button
             android:id="@+id/last_day_btn"
             android:layout_width="202dp"
             android:layout_height="49dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="164dp"
+            android:background="@drawable/last_day_btn"
             android:text="За последние сутки"
+            android:textColor="#E4F2E7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     <Button
             android:id="@+id/last_week_btn"
-            android:layout_width="202dp"
-            android:layout_height="wrap_content"
+            android:layout_width="203dp"
+            android:layout_height="49dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/last_week_btn"
             android:text="За последнюю неделю"
+            android:textColor="#E4F2E7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/last_day_btn" />
@@ -41,9 +34,11 @@
     <Button
             android:id="@+id/last_month_btn"
             android:layout_width="202dp"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/last_month_btn"
             android:text="За последний месяц"
+            android:textColor="#E4F2E7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/last_week_btn" />

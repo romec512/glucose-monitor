@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.widget.TextView;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -26,14 +29,27 @@ import weka.core.Instances;
 public class ChartActivity extends AppCompatActivity {
     private int numOfDays;
     public GraphView graphView;
+    public TextView chartsPeriodTV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
+        chartsPeriodTV = (TextView) findViewById(R.id.charts_period_tv);
+
         graphView = (GraphView) findViewById(R.id.graph);
 
         numOfDays = getIntent().getIntExtra("numOfDays", 1);
+
+        String chartsPeriod = "";
+        if (numOfDays > 1) {
+            chartsPeriod = "за последние " + numOfDays + " дней";
+        } else {
+            chartsPeriod = "за последние сутки";
+        }
+
+        chartsPeriodTV.setText(chartsPeriod);
+
         String pathToData = "/storage/emulated/0/glucose-monitor/test.arff";
         Instances instances = null;
         try {

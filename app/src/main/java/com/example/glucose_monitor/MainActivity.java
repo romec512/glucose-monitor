@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ToggleButton notificationsBtn;
     private TextView forecastedNumTV;
     private TextView forecastedTimeTV;
+    private Button instructionBtn;
     public static final String APP_PREFERENCES = "app_settings";
     public static final String APP_PREFERENCES_NOTIFICATIONS = "notifications_enabled";
     private SharedPreferences mSettings;
@@ -42,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
         notificationsBtn = (ToggleButton) findViewById(R.id.notifications_btn);
         forecastedNumTV = (TextView)findViewById(R.id.forecasted_num_tv);
         forecastedTimeTV = (TextView)findViewById(R.id.forecasted_time_tv);
+        instructionBtn = (Button)findViewById(R.id.instruction_btn);
+
+        instructionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, InstructionActivity.class));
+            }
+        });
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (!mSettings.contains(APP_PREFERENCES_NOTIFICATIONS)) {
@@ -52,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (mSettings.getBoolean(APP_PREFERENCES_NOTIFICATIONS, true)) {
             notificationsBtn.setChecked(true);
+            notificationsBtn.setBackgroundResource(R.drawable.bell_on);
         } else {
             notificationsBtn.setChecked(false);
+            notificationsBtn.setBackgroundResource(R.drawable.bell_off);
         }
 
         setPrediction();
@@ -74,9 +85,11 @@ public class MainActivity extends AppCompatActivity {
                 if (!mSettings.getBoolean(APP_PREFERENCES_NOTIFICATIONS, false)) {
                     editor.putBoolean(APP_PREFERENCES_NOTIFICATIONS, true);
                     setNotifications();
+                    notificationsBtn.setBackgroundResource(R.drawable.bell_on);
                 } else {
                     editor.putBoolean(APP_PREFERENCES_NOTIFICATIONS, false);
                     stopNotificationsAlarm();
+                    notificationsBtn.setBackgroundResource(R.drawable.bell_off);
                 }
                 editor.apply();
             }

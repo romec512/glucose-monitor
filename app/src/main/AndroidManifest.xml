@@ -13,7 +13,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ChartActivity"></activity>
+        <activity android:name=".InstructionActivity"></activity>
+        <activity android:name=".ChartActivity" />
         <activity android:name=".SelectChartsType" />
 
         <receiver
@@ -24,8 +25,12 @@
                 android:name=".ForecasterBroadcastReceiver"
                 android:enabled="true" />
 
-        <activity android:name=".InputGlucoseActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+                android:name=".InputGlucoseActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+                android:name=".MainActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

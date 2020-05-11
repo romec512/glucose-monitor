@@ -4,13 +4,28 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/chart_background"
         tools:context=".ChartActivity">
 
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
             android:layout_width="332dp"
             android:layout_height="366dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.11"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/charts_period_tv" />
+
+    <TextView
+            android:id="@+id/charts_period_tv"
+            android:layout_width="276dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="64dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#3A95A6"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
