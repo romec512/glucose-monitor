@@ -60,7 +60,8 @@ public class ChartActivity extends AppCompatActivity {
             Date timeOfMeasuring = new Date((long)instance.value(0));
 
             if (timeOfMeasuring.after(fromDate) && timeOfMeasuring.before(toDate)) {
-                dataPoints.add(new DataPoint(timeOfMeasuring, instance.value(1)));
+                double value = instance.value(1) / 18;
+                dataPoints.add(new DataPoint(timeOfMeasuring, value));
             }
         }
         Collections.reverse(dataPoints);
