@@ -1,8 +1,13 @@
 package com.example.glucose_monitor;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import androidx.core.app.NotificationCompat;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +25,8 @@ import weka.classifiers.evaluation.NumericPrediction;
 import weka.classifiers.functions.LinearRegression;
 import weka.classifiers.timeseries.WekaForecaster;
 import weka.core.Instances;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
 
 
 public class ForecasterBroadcastReceiver extends BroadcastReceiver {
@@ -120,6 +127,43 @@ public class ForecasterBroadcastReceiver extends BroadcastReceiver {
             fOut.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        double predicted = forecast.get(forecast.size() - 1).get(0).predicted();
+        if (predicted > 8.5) {
+            Intent saveValueIntent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, saveValueIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+            NotificationCompat.Builder builder =
+                    new NotificationCompat.Builder(context)
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setContentTitle("Внимание!")
+                            .setContentText("Ожидается опасно высокое значение гликемии!")
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true);
+
+            Notification notification = builder.build();
+
+            NotificationManager notificationManager =
+                    (NotificationManager)context.getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.notify(2, notification);
+        } else if (predicted < 3.0) {
+            Intent saveValueIntent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, saveValueIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+            NotificationCompat.Builder builder =
+                    new NotificationCompat.Builder(context)
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setContentTitle("Внимание!")
+                            .setContentText("Ожидается опасно низкое значение гликемии!")
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true);
+
+            Notification notification = builder.build();
+
+            NotificationManager notificationManager =
+                    (NotificationManager)context.getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.notify(2, notification);
         }
     }
 }

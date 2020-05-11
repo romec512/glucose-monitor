@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
             }
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
             Float predicted = Float.parseFloat(prediction[1]) / 18;
+            if (predicted > 8.5 || predicted < 3.0) {
+                forecastedNumTV.setTextColor(getResources().getColor(R.color.colorDanger));
+            }
             forecastedNumTV.setText(String.format("%.2f", predicted));
             forecastedTimeTV.setText("Ожидается в " + timeFormat.format(predictedDate));
         }
