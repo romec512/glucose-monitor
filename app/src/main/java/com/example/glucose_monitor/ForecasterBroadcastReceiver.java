@@ -23,7 +23,6 @@ import weka.core.Instances;
 
 
 public class ForecasterBroadcastReceiver extends BroadcastReceiver {
-    public static int Num = 0;
     @Override
     public void onReceive(Context context, Intent intent) {
         //ToDo: настроить периоды предсказания и кол-во предсказаний
@@ -73,9 +72,17 @@ public class ForecasterBroadcastReceiver extends BroadcastReceiver {
         // training data
         long deltaTime = (long)forecaster.getTSLagMaker().getDeltaTime();
 
+        long numbersOfSteps;
+
+        if (deltaTime < 60 * 60 * 1000) {
+            numbersOfSteps = (60 * 60 * 1000) / deltaTime;
+        } else {
+            numbersOfSteps = 1;
+        }
+
         List<List<NumericPrediction>> forecast = null;
         try {
-            forecast = forecaster.forecast(2, System.out);
+            forecast = forecaster.forecast((int)numbersOfSteps, System.out);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,14 +91,12 @@ public class ForecasterBroadcastReceiver extends BroadcastReceiver {
         String lastDate = instances.lastInstance().stringValue(0);
         Date firstPredictedDate = null;
         try {
-            firstPredictedDate = new Date(format.parse(lastDate).getTime() + deltaTime);
+            firstPredictedDate = new Date(format.parse(lastDate).getTime() + numbersOfSteps * deltaTime);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Date secondPredictedDate = new Date(firstPredictedDate.getTime() + deltaTime);
 
-        String data = format.format(firstPredictedDate) + ',' + forecast.get(0).get(0).predicted();
-        data += '\n' + format.format(secondPredictedDate) + ',' + forecast.get(1).get(0).predicted();
+        String data = format.format(firstPredictedDate) + ',' + forecast.get(forecast.size() - 1).get(0).predicted();
 
         //Save predicted glucose value and time in file
         File outputPreditcted = new File(pathToSavePredicted);
