@@ -71,13 +71,21 @@ public class ChartActivity extends AppCompatActivity {
         Date fromDate = new Date(timestamp);
         ArrayList<DataPoint> dataPoints = new ArrayList<DataPoint>();
         //from last instance to first instance
+        Date lastTimeOfMeasuring = null;
         for (int i = size - 1; i > 0; i--) {
             Instance instance = instances.get(i);
             Date timeOfMeasuring = new Date((long)instance.value(0));
 
             if (timeOfMeasuring.after(fromDate) && timeOfMeasuring.before(toDate)) {
-                double value = instance.value(1) / 18;
-                dataPoints.add(new DataPoint(timeOfMeasuring, value));
+                long difference = 2 * 60 * 60 * 1000;
+                if (numOfDays > 1 && lastTimeOfMeasuring != null) {
+                    difference = lastTimeOfMeasuring.getTime() - timeOfMeasuring.getTime();
+                }
+                if (difference >= 2 * 60 * 60 * 1000) {
+                    double value = instance.value(1) / 18;
+                    dataPoints.add(new DataPoint(timeOfMeasuring, value));
+                    lastTimeOfMeasuring = timeOfMeasuring;
+                }
             }
         }
         Collections.reverse(dataPoints);
