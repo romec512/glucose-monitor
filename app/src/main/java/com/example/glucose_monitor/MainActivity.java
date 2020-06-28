@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(context, NotificationsBroadcastReceiver.class);
         PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + 1000, 1 * 60 * 1000, alarmIntent);
+                SystemClock.elapsedRealtime() + 1000, 4 * 60 * 60 * 1000, alarmIntent);
     }
 
     protected boolean hasAlarmAlreadyStarted() {

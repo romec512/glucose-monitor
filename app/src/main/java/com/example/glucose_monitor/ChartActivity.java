@@ -28,8 +28,8 @@ import weka.core.Instances;
 
 public class ChartActivity extends AppCompatActivity {
     private int numOfDays;
-    public GraphView graphView;
-    public TextView chartsPeriodTV;
+    private GraphView graphView;
+    private TextView chartsPeriodTV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
